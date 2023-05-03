@@ -11,6 +11,7 @@ PID = 0x5020
 
 # Set opcodes
 CLEAR = 1
+# CLEAR = 0x01
 REFRESH_MODE = 2
 SPEED = 4
 CONTRAST = 5
@@ -28,7 +29,7 @@ refresh_modes = {
     "a2": 3
 }
 
-# Define autodither (antiflicker) modes
+# define autodither (antiflicker) modes
 auto_dither_modes = {
         "disabled": [0, 0, 0, 0,],
         "low": [1, 0, 30, 10],
@@ -103,7 +104,7 @@ def set_display_preset(mode, args):
 
 
 def send_code(dev, code):
-    dev.write([0] + code)
+    dev.write(bytes([0] + code))
     sleep(0.5)
 
 
@@ -208,9 +209,9 @@ def parse_args():
 
 def set_args(args, device_list):
     for device in device_list:
-        dev = hid.device()
-        dev.open(VID, PID, device["serial_number"])
-        dev.set_nonblocking(1)
+        # dev = hid.device()
+        dev = hid.Device(VID, PID, device["serial_number"])
+        dev.nonblocking = 1
 
         if args.display_mode is not None:
             display_val = args.display_mode
