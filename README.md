@@ -1,31 +1,21 @@
 # miractl
 
-A simple Python script for controlling Boox e-ink monitors – both the Boox Mira 13.3" and Boox Mira Pro 25.3" are supported. 
+*Forked from [~elithper/miractl](https://git.sr.ht/~elithper/miractl) - many shouts!*
+
+A simple Python script for controlling Boox e-ink monitors on NixOS – both the Boox Mira 13.3" and Boox Mira Pro 25.3" are supported. 
 
 The script has been tested on Linux, Mac and Windows using Python 3.11.
 
 This project is inspired by the excellent [mira-js](https://github.com/ipodnerd3019/mira-js) CLI tool.
 
-## Dependencies
+## Install
 
-- [Cython](https://github.com/cython/cython)
-- [cython-hidapi](https://github.com/trezor/cython-hidapi)
-
-Install both via `pip`.
-
-```
-pip install Cython
-pip install hidapi
+``` sh
+shell nix-shell
+./miractl.py --help
 ```
 
 ## Setup
-
-While the script can be run with a simple `./miractl.py [OPTIONS]`, placing it somewhere in your $PATH is recommended. For example, on Linux/Mac:
-
-```
-sudo cp ./miractl.py /usr/local/bin/miractl
-sudo chmod 755 /usr/local/bin/miractl
-```
 
 If you are using Linux, you will also need to modify your udev rules.
 
